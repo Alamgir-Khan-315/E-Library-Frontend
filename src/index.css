@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.secondary{ @apply bg-purple-500 }
+.primary{ @apply bg-blue-500 }
+.Title{@apply text-2xl font-bold p-2}
+.primary-btn{ @apply w-fit p-2 px-3 rounded-xl font-bold text-white bg-blue-500 cursor-pointer hover:bg-blue-800 hover:shadow-xl hover:scale-105 duration-100 transition-all }
+.secondary-btn{ @apply w-fit p-2 px-3 rounded-xl font-bold border border-white cursor-pointer hover:bg-white/20 hover:shadow-xl hover:scale-105 duration-100 transition-all }
+
+.main{
+    @apply w-full min-h-screen bg-blue-50/50
+}
+
+/* nav */
+.Sign_toggle{
+    @apply md:w-[50%] py-5 primary text-center text-white
+}
+.Sign{
+    @apply md:w-[50%] text-center py-5
+}
+.input{ @apply w-full p-2 rounded-lg border bg-blue-100/20 }
+
+/* Admin */
+.box-count{ @apply bg-white p-6 rounded-lg shadow-lg flex-1 text-center}
