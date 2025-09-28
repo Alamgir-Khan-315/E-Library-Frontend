@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_BASE_URL = "https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app/api/users";
+const API_BASE_URL = "https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app/api/users/";
 
 const StudentLogIn = async(data, navigate) => {
     try {
