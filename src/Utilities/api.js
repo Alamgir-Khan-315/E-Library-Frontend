@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_BASE_URL = "https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app/api/users/";
+const API_BASE_URL = "https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app/api/users";
 
 const StudentLogIn = async(data, navigate) => {
     try {
@@ -43,7 +43,7 @@ const StudentLogIn = async(data, navigate) => {
 
   const GetDepartment = async (setDepartment) => {
       try {
-        const response = await axios.get("https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app/api/departments");
+        const response = await axios.get(`${URL}/api/departments`);
         setDepartment(response.data);
         localStorage.setItem('departnments', JSON.stringify(response.data));
       } catch (err) {
