@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 
 const Add_course = () => {
-  const URL = 'https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app'
+  const URL = 'https://e-library-backend-three.vercel.app'
   const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState({
     departmentName: "",

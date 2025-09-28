@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CourseCards = (props) => {
   
-  const URL = 'https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app'
+  const URL = 'https://e-library-backend-three.vercel.app'
   const [courses, setCourses] = useState([]);
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [departments, setDepartments] = useState([]);

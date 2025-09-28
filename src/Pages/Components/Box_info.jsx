@@ -6,7 +6,7 @@ import Add_course from './Add_course';
 
 const Box_info = () => {
   
-  const URL = 'https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app'
+  const URL = 'https://e-library-backend-three.vercel.app'
   const [totalStudents, setTotalStudents] = useState(0);
   const [TotalDepartments, setTotalDepartments] = useState(0);
   const [TotalCourses, setTotalCourses] = useState(0);

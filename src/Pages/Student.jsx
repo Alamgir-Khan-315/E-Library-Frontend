@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LandingPage = (props) => {
   
-  const URL = 'https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app'
+  const URL = 'https://e-library-backend-three.vercel.app'
   const [departments, setDepartments] = useState([]);
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);

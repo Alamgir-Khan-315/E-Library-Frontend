@@ -9,7 +9,7 @@ const CourseList = () => {
 
   useEffect(() => {
     
-  const URL = 'https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app'
+  const URL = 'https://e-library-backend-three.vercel.app'
     const fetchCourses = async () => {
       try {
         const res = await axios.get(`${URL}/api/courses`);

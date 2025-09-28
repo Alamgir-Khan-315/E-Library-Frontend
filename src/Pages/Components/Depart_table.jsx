@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Course_list = () => {
   
-  const URL = 'https://e-library-backend-eiuajc1qh-alamgir-khan-aks-projects.vercel.app'
+  const URL = 'https://e-library-backend-three.vercel.app'
     const [Department, setDepartment] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
