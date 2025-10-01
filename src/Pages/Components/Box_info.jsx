@@ -45,7 +45,7 @@ const Box_info = () => {
   }, []);
 
   return (
-    <div className='flex flex-row gap-5'>
+    <div className='flex flex-wrap justify-center gap-5'>
 
       <div className='box-count'>
         <h1 className='text-lg font-semibold text-gray-700'>No of Students</h1>
@@ -53,19 +53,21 @@ const Box_info = () => {
       </div>
 
       <div className='box-count flex justify-around items-center '>
-       <div className="box_info">
+       <div className="box_info flex flex-col justify-center items-center">
+       <div className='md:hidden'><Add_depart /></div>
         <h1 className='text-lg font-semibold text-gray-700'>No of Departs</h1>
         <h1 className='text-4xl font-bold text-gray-900 mt-2'>{ TotalDepartments }</h1>
        </div>
-        <Add_depart />
+        <div className='hidden md:flex'><Add_depart /></div>
       </div>
 
        <div className='box-count flex justify-around items-center '>
-       <div className="box_info">
+       <div className="box_info flex flex-col justify-center items-center">
+       <div className='md:hidden'><Add_course /></div>
         <h1 className='text-lg font-semibold text-gray-700'>No of Courses</h1>
         <h1 className='text-4xl font-bold text-gray-900 mt-2'>{ TotalCourses }</h1>
        </div>
-        <Add_course />
+       <div className='hidden md:flex'><Add_course /></div>
       </div>
 
     </div>
