@@ -18,7 +18,7 @@ const AddDepartment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${URL}/api/departments"`, form);
+      await axios.post(`${URL}/api/departments`, form);
       alert("Department added successfully!");
       setIsOpen(false);
       setForm({ departmentName: "", hod: "" });
