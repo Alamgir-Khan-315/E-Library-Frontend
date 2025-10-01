@@ -8,6 +8,7 @@ const CourseCards = (props) => {
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [selectedDept, setSelectedDept] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -46,20 +47,43 @@ const CourseCards = (props) => {
 
   
   useEffect(() => {
-    if (selectedDept === "all") {
-      setFilteredCourses(courses);
-    } else {
-      setFilteredCourses(courses.filter(c => c.departmentName === selectedDept));
-    }
-  }, [selectedDept, courses]);
+    let updated = [...courses];
 
-  if (loading) return <div className="text-center mt-10 text-gray-500">Loading...</div>;
-  if (error) return <div className="text-center mt-10 text-red-500">{error}</div>;
+    if (selectedDept !== "all") {
+      updated = updated.filter(
+        (c) => c.departmentName.toLowerCase() === selectedDept.toLowerCase()
+      );
+    }
+
+    if (searchTerm.trim() !== "") {
+      updated = updated.filter((c) =>
+        c.courseName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    setFilteredCourses(updated);
+  }, [selectedDept, searchTerm, courses]);
+
+  if (loading)
+    return (
+      <div className="text-center mt-10 text-gray-500">Loading...</div>
+    );
+  if (error)
+    return <div className="text-center mt-10 text-red-500">{error}</div>;
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4">
         <h1 className="text-3xl font-bold text-gray-800">Course List</h1>
+
+
+        <input
+          type="text"
+          placeholder="Search by course name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border-2 rounded-xl px-3 py-2 text-gray-700 w-full md:w-1/3"
+        />
 
 
         <select
@@ -87,45 +111,49 @@ const CourseCards = (props) => {
                 <h2 className="text-2xl font-bold text-gray-800 my-4 text-center">
                   {course.courseName}
                 </h2>
-                
+
                 <div className="body_text my-2">
                   <p className="text-sm text-gray-600">
-                    <span className="font-medium">Department:</span> {course.departmentName}
+                    <span className="font-medium">Department:</span>{" "}
+                    {course.departmentName}
                   </p>
                   <p className="text-sm text-gray-600">
-                    <span className="font-medium">Semester:</span> {course.semesterNo}
+                    <span className="font-medium">Semester:</span>{" "}
+                    {course.semesterNo}
                   </p>
                   <p className="text-sm text-gray-600">
-                    <span className="font-medium">Instructor:</span> {course.instructor}
+                    <span className="font-medium">Instructor:</span>{" "}
+                    {course.instructor}
                   </p>
                 </div>
 
-               <div className="btn items-center justify-center flex">
-               
-               {props.student?.role === "student" || props.student?.role ===  'admin' ? (
-                  course.pdf_url && (
-                    <a
-                      href={course.pdf_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-block primary-btn"
-                    >
-                      View PDF
-                    </a>
-                  )
-                ) : (
-                  <button className="mt-4 inline-block bg-gray-300 text-gray-700 px-4 py-2 rounded">
-                    Log in to get PDF
-                  </button>
-                )}
-
-               </div>
+                <div className="btn items-center justify-center flex">
+                  {props.student?.role === "student" ||
+                  props.student?.role === "admin" ? (
+                    course.pdf_url && (
+                      <a
+                        href={course.pdf_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-block primary-btn"
+                      >
+                        View PDF
+                      </a>
+                    )
+                  ) : (
+                    <button className="mt-4 inline-block bg-gray-300 text-gray-700 px-4 py-2 rounded">
+                      Log in to get PDF
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className="text-center text-gray-500">No courses found for this department.</div>
+        <div className="text-center text-gray-500">
+          No courses found matching your search.
+        </div>
       )}
     </div>
   );
