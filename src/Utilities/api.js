@@ -24,7 +24,7 @@ const StudentLogIn = async(data, navigate) => {
       const res = await axios.post( `${API_BASE_URL}` , data);
       console.log("Saved:", res.data);
       alert("Student saved successfully!");
-      setData({ name: "", password: "", department: "", semester: "" });
+      setData({ role : "" , name: "", password: "", department: "", semester: "" });
     } catch (err) {
       console.error("Error:", err.response?.data || err.message);
     }

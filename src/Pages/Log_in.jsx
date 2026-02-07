@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { StudentLogIn , AddStudent } from '../Utilities/api'
+import { StudentLogIn, AddStudent } from '../Utilities/api'
 
 const Log_in = () => {
   const [log, setlog] = useState(true)
@@ -8,11 +8,11 @@ const Log_in = () => {
   const navigate = useNavigate();
 
   const [data, setdata] = useState({
+    role: "",
     name: "",
     password: "",
     department: "",
-    semester: "",
-    role:"student"
+    semester: ""
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -24,12 +24,13 @@ const Log_in = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    StudentLogIn(data, navigate); 
+    StudentLogIn(data, navigate);
   };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(data)
     await AddStudent(data);
     window.location.reload();
   };
@@ -53,6 +54,18 @@ const Log_in = () => {
             <h1 className="Title">Sign up</h1>
             <h1>Use your email and password</h1>
             <div className="form w-[80%] py-5 flex mx-auto items-center flex-col gap-5">
+
+              <select
+                className="input"
+                name="role"
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select role</option>
+                <option value="admin">Admin</option>
+                <option value="student">Student</option>
+              </select>
+
               <input className="input" name="name" onChange={handleChange} type="text" placeholder="Name" required />
 
               <div className="w-full relative">
@@ -72,8 +85,10 @@ const Log_in = () => {
                 </span>
               </div>
 
-              <input className="input" name="department" onChange={handleChange} type="text" placeholder="departmentment" required />
-              <input className="input" name="semester" onChange={handleChange} type="number" placeholder="Semester" required />
+              { data.role === "admin" ? "" : 
+              <><input className="input" name="department" onChange={handleChange} type="text" placeholder="departmentment" required />
+              <input className="input" name="semester" onChange={handleChange} type="number" placeholder="Semester" required /></>
+              }
 
               <h1>Already have an account</h1>
               <div className="primary-btn cursor-pointer" onClick={handleSubmit}>SIGN UP</div>
@@ -107,10 +122,10 @@ const Log_in = () => {
                 </div>
 
                 <h1>Forget your password?</h1>
-                
+
                 <div className='flex gap-5'>
-                <div className="primary-btn cursor-pointer" onClick={handleLogin}>SIGN IN</div>
-                <div className="primary-btn cursor-pointer md:hidden" onClick={() => setMobSignUp(!MobSignUp)}>SIGN UP</div>
+                  <div className="primary-btn cursor-pointer" onClick={handleLogin}>SIGN IN</div>
+                  <div className="primary-btn cursor-pointer md:hidden" onClick={() => setMobSignUp(!MobSignUp)}>SIGN UP</div>
                 </div>
 
               </div>
@@ -123,6 +138,18 @@ const Log_in = () => {
             <h1 className="Title">Sign up</h1>
             <h1>Use your email and password</h1>
             <div className="form w-[80%] py-5 flex mx-auto items-center flex-col gap-5">
+              
+              <select
+                className="input"
+                name="role"
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select role</option>
+                <option value="admin">Admin</option>
+                <option value="student">Student</option>
+              </select>
+              
               <input className="input" name="name" onChange={handleChange} type="text" placeholder="Name" required />
 
               <div className="w-full relative">
@@ -142,8 +169,11 @@ const Log_in = () => {
                 </span>
               </div>
 
-              <input className="input" name="department" onChange={handleChange} type="text" placeholder="departmentment" required />
-              <input className="input" name="semester" onChange={handleChange} type="number" placeholder="Semester" required />
+
+             { data.role === "admin" ? "" : 
+              <><input className="input" name="department" onChange={handleChange} type="text" placeholder="departmentment" required />
+              <input className="input" name="semester" onChange={handleChange} type="number" placeholder="Semester" required /></>
+              }
 
               <div onClick={() => setMobSignUp(!MobSignUp)}><h1>Already have an account</h1></div>
               <div className="primary-btn cursor-pointer" onClick={handleSubmit}>SIGN UP</div>

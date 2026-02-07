@@ -62,7 +62,8 @@ export default function PdfOcrSummarizer() {
         <div className="min-h-screen bg-gray-50 p-6 max-w-3xl mx-auto">
             <h1 className="text-2xl font-bold mb-4">PDF OCR & Summary</h1>
 
-            <input
+            <div className="flex justify-between">
+                <input
                 type="file"
                 accept="application/pdf"
                 onChange={(e) => setFile(e.target.files[0])}
@@ -76,6 +77,7 @@ export default function PdfOcrSummarizer() {
             >
                 {loading ? "Processing..." : "Upload & Analyze"}
             </button>
+            </div>
 
             {text && (
                 <div className="mt-8">
