@@ -40,10 +40,8 @@ export default function PdfOcrSummarizer() {
             });
 
             if (!summaryRes.ok) {
-                if (summaryRes.status === 404) {
-                    throw new Error("Backend endpoint not found. Did you restart the server?");
-                }
-                throw new Error("Summarization failed on server.");
+                const errorData = await summaryRes.json().catch(() => ({}));
+                throw new Error(errorData.details || errorData.error || "Summarization failed on server.");
             }
 
             const summaryData = await summaryRes.json();
@@ -64,19 +62,19 @@ export default function PdfOcrSummarizer() {
 
             <div className="flex justify-between">
                 <input
-                type="file"
-                accept="application/pdf"
-                onChange={(e) => setFile(e.target.files[0])}
-                className="mb-4"
-            />
+                    type="file"
+                    accept="application/pdf"
+                    onChange={(e) => setFile(e.target.files[0])}
+                    className="mb-4"
+                />
 
-            <button
-                onClick={handleUpload}
-                disabled={loading}
-                className="px-4 py-2 bg-[#6366F1] hover:bg-[#6366F1]/80 text-white rounded-xl shadow"
-            >
-                {loading ? "Processing..." : "Upload & Analyze"}
-            </button>
+                <button
+                    onClick={handleUpload}
+                    disabled={loading}
+                    className="px-4 py-2 bg-[#6366F1] hover:bg-[#6366F1]/80 text-white rounded-xl shadow"
+                >
+                    {loading ? "Processing..." : "Upload & Analyze"}
+                </button>
             </div>
 
             {text && (

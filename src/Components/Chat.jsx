@@ -24,7 +24,7 @@ export default function ChatAssistant({ onClose }) {
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Request failed");
+        throw new Error(data.details || data.error || "Request failed");
       }
 
       setMessages((prev) => [
