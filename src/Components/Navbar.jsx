@@ -77,6 +77,7 @@ const Navbar = (props) => {
           <NavLink to="/" className={({ isActive }) => `block rounded-md px-3 py-2 ${navLinkBase} ${isActive ? navLinkActive : ''}`} onClick={closeMobileMenu} end >Home</NavLink>
           <NavLink to="/library" className={({ isActive }) => `block rounded-md px-3 py-2 ${navLinkBase} ${isActive ? navLinkActive : ''}`} onClick={closeMobileMenu} end >Library</NavLink>
           <NavLink to="/department" className={({ isActive }) => `block rounded-md px-3 py-2 ${navLinkBase} ${isActive ? navLinkActive : ''}`} onClick={closeMobileMenu} end >Departments</NavLink>
+          <NavLink to="/ocr" className={({ isActive }) => `block rounded-md px-3 py-2 ${navLinkBase} ${isActive ? navLinkActive : ''}`} onClick={closeMobileMenu} end >OCR</NavLink>
           <NavLink to="/profile" className={({ isActive }) => `block rounded-md px-3 py-2 ${navLinkBase} ${isActive ? navLinkActive : ''}`} onClick={closeMobileMenu} end >Profile</NavLink>
 
           <div className="pt-2">

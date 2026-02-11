@@ -32,7 +32,7 @@ export default function PdfOcrSummarizer() {
             const extractedText = data?.ParsedResults?.[0]?.ParsedText || "";
             setText(extractedText);
 
-            // Call backend for summarization
+            
             const summaryRes = await fetch("http://localhost:5000/api/summarize", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
