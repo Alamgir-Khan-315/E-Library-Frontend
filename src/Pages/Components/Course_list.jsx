@@ -137,7 +137,7 @@ const CourseCards = (props) => {
                         rel="noopener noreferrer"
                         className="mt-4 inline-block primary-btn"
                       >
-                        View PDF
+                        View Folder
                       </a>
                     )
                   ) : (
