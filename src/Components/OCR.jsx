@@ -32,7 +32,7 @@ export default function PdfOcrSummarizer() {
             const extractedText = data?.ParsedResults?.[0]?.ParsedText || "";
             setText(extractedText);
 
-            
+
             const summaryRes = await fetch("http://localhost:5000/api/summarize", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ export default function PdfOcrSummarizer() {
         <div className="min-h-screen bg-gray-50 p-6 max-w-3xl mx-auto">
             <h1 className="text-2xl font-bold mb-4">PDF OCR & Summary</h1>
 
-            <div className="flex justify-between">
+            <div className="flex flex-col md:flex-row md:justify-between">
                 <input
                     type="file"
                     accept="application/pdf"
